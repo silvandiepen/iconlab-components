@@ -1,0 +1,54 @@
+svg * {
+  transform-box: fill-box;
+}
+
+svg:hover path:nth-child(2),
+svg:hover rect {
+  opacity: 0.5;
+}
+
+
+/* svg rect:nth-child(3) {
+  transform: scaleY(27);
+  transform-origin: 0% 0%;
+} */
+svg:hover rect:nth-child(3) {
+  animation: unlockLine 2s ease-in-out forwards;
+}
+
+@keyframes unlockLine {
+  0% {
+    transform: translateY(0%) scaleY(27);
+  }
+  25%, 100% {
+    transform:  translateY(2700%) scaleY(0);
+  }
+
+}
+@keyframes unlockBow {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(75%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+svg:hover path:nth-child(2) {
+  animation: unlockBow 2s ease-in-out forwards;
+}
+@keyframes unlockLine2 {
+  100%,
+  0% {
+    transform: scaleY(1);
+  }
+  25% {
+    transform: scaleY(0);
+  }
+}
+svg:hover rect:nth-child(4) {
+  transform-origin: 100% 100%;
+  animation: unlockLine2 2s ease-in-out forwards;
+}

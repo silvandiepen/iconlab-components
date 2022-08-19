@@ -1,0 +1,10 @@
+
+export const allIcons = [<% icons.forEach(function(icon,index) { %>
+    { 
+        "name": "<%- kebabCase(icon.name) %>",
+        "componentName": "<%- PascalCase(icon.name) %>",
+        "data": "<%- escape(icon.data) %>",
+        "style": "<%- escape(icon.style) %>"
+    }<% if(index < icons.length -1){ %>,<% } -%>
+<% }); %>
+];

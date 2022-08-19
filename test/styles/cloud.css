@@ -1,0 +1,23 @@
+svg * {
+  transform-box: fill-box;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  25%,
+  75% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+svg:hover path {
+  transform-origin: 50% 50%;
+  animation: pulse 5s ease-in-out infinite;
+}

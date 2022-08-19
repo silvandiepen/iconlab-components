@@ -1,0 +1,20 @@
+/* svg * {
+  transform-box: fill-box;
+} */
+
+svg:hover {
+  animation: squeeze 1s ease-in-out forwards;
+}
+
+@keyframes squeeze {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  33% {
+    transform: scale(1.5, 0.75);
+  }
+  66% {
+    transform: scale(0.75, 1.5);
+  }
+}

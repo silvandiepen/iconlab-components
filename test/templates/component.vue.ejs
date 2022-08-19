@@ -1,0 +1,9 @@
+<template> <%- icon.data %> </template>
+<script lang="ts">
+	export default defineComponent({
+		name: '<%- PascalCase(icon.name) %>'
+	});
+</script>
+<% if (icon.style) { %><style scoped>
+	<%- icon.style %></style
+><% } %>

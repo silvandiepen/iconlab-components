@@ -1,0 +1,5 @@
+
+export enum Icons {<% icons.forEach(function(icon,index) { %>
+    <%- upperSnakeCase(icon.name) %> = "<%- icon.name %>"<% if(index < icons.length -1){ %>,<% } -%>
+<% }); %>
+}

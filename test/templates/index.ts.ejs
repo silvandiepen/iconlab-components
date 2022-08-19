@@ -1,0 +1,5 @@
+
+export const iconList = [<% icons.forEach(function(file,index) { %>
+    "<%- file.name %>"<% if(index < icons.length -1){ %>,<% } -%>
+<% }); %>
+]
