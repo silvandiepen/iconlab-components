@@ -8,7 +8,8 @@
 		"test": "jest --verbose",
 		"build": "tsc",
 		"dev": "tsc -w",
-		"test:run": "node dist/cli.js --icons test/icons --styles test/styles --templates test/templates --output test/dist"
+		"test:bun": "bun run src/cli.ts --icons test/icons --styles test/styles --templates test/templates --output test/bun/dist",
+		"test:run": "node dist/cli.js --icons test/icons --styles test/styles --templates test/templates --output test/node/dist"
 	},
 	"repository": {
 		"type": "git",

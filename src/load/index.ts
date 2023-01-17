@@ -9,6 +9,7 @@ import {
 	dim
 } from 'cli-block';
 import { basename, extname, join } from 'path';
+
 import {
 	asyncForEach,
 	readDir,
@@ -33,10 +34,11 @@ const getFiles = async (
 		blockLineError(`${dir} does not exist`);
 		return;
 	}
-	const filenames = await readDir(dir);
-	const files = [];
 
 	const { remove } = useStateSettings();
+
+	const filenames = await readDir(dir);
+	const files = [];
 
 	const ogName = (v: string): string => basename(v).replace(extname(v), '');
 	const prettifiedName = (v: string): string =>
@@ -62,47 +64,45 @@ const getFiles = async (
 	return files;
 };
 
+const logLoaded = (title: string, data: DataFile[]) => {
+	blockLine(blue(bold(title)));
+
+	data.forEach((item) => {
+		blockRowLine([
+			`${basename(item.og_name)}${dim(item.extension)}`,
+			dim(`${item.size} bytes`)
+		]);
+	});
+	blockLine();
+};
+
 export const load = async (): Promise<void> => {
 	blockMid('Load');
 
 	const { source } = useStateSettings();
 
-	const logLoaded = (title: string, data: DataFile[]) => {
-		blockLine(blue(bold(title)));
-
-		data.forEach((item) => {
-			blockRowLine([
-				`${basename(item.og_name)}${dim(item.extension)}`,
-				dim(`${item.size} bytes`)
-			]);
-		});
-		blockLine();
-	};
-
 	// Load all Icons
 	const iconData = await (
 		await getFiles(source.icons, { filter: ['.svg'] })
 	).map((f) => ({ ...f, data: removeXml(f.data) }));
-	await setIcons(iconData);
+	setIcons(iconData);
 	logLoaded('icons', iconData);
 
 	// Load all Styles
 	const styleData = await getFiles(source.styles, {
 		filter: ['.css', '.scss', '.less', '.sass', '.stylus']
 	});
-	await setStyles(styleData);
+	setStyles(styleData);
 	logLoaded('Styles', styleData);
 
 	// Load All Templates
 	const templateData = await getFiles(source.templates, {
 		filter: ['.ejs', '.template']
 	});
-	await setTemplates(templateData);
+	setTemplates(templateData);
 	logLoaded('Templates', templateData);
 
 	// Enrich Data
-
 	await enrichAllFiles();
 
-	// const fileData = enrichData(file);
 };

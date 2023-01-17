@@ -1,9 +1,10 @@
 import { DataFile, State } from './state.model';
 
+// State
 const state: State = {
 	data: {
 		icons: [],
-		styles: [],
+		styles: [], 
 		templates: []
 	},
 	settings: {
@@ -28,32 +29,32 @@ const state: State = {
 		}
 	}
 };
+
+// Getters
 export const useState = (): State => Object.freeze(state);
 export const useStateData = (): State['data'] => Object.freeze(state.data);
 export const useStateSettings = (): State['settings'] =>
 	Object.freeze(state.settings);
 
-export const setData = async (
-	category: string,
-	data: DataFile[]
-): Promise<void> => {
+// Setters
+
+	export const setData = (category: string, data: DataFile[]): void => {
 	state.data[category].push(data);
 };
 
-export const setIcons = async (data: DataFile[]): Promise<void> => {
+export const setIcons = (data: DataFile[]): void => {
 	state.data.icons = data;
 };
 
-export const setIconData = async (data: DataFile, id: number): Promise<void> => {
-	// state.data.icons = data;
+export const setIconData = (data: DataFile, id: number): void => {
 	state.data.icons[id] = data;
 };
 
-export const setStyles = async (data: DataFile[]): Promise<void> => {
+export const setStyles = (data: DataFile[]): void => {
 	state.data.styles = data;
 };
 
-export const setTemplates = async (data: DataFile[]): Promise<void> => {
+export const setTemplates = (data: DataFile[]): void => {
 	state.data.templates = data;
 };
 

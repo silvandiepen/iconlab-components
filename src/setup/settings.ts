@@ -69,7 +69,7 @@ export const parseSettings = async (args: Args): Promise<void> => {
 	}
 };
 
-export const checkSettings = () => {
+export const validateSettings = () => {
 	const errors = [];
 
 	const { source, destination } = useStateSettings();

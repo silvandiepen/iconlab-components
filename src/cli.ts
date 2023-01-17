@@ -1,26 +1,21 @@
-#!/usr/bin/env node
-// import { hello } from '@sil/tools';
+// #!/usr/bin/env node
 
-import { blockFooter, blockFull, blockHeader, blockLine } from 'cli-block';
+// import { blockFooter, blockHeader, blockLine } from 'cli-block';
 import { setup } from './setup';
-import { load } from './load';
-import { build } from './build';
+// import { load } from './load';
+// import { build } from './build';
 
-// Flow
-
-export const hello = async (args: unknown = {}): Promise<unknown> => {
-	return args;
-};
-
+// Steps
 (async () => {
-	blockHeader('Iconlab');
-	blockLine();
-	blockLine(
-		'Iconlab is building your icons from SVG and CSS files in the way you want.'
-	);
+	// blockHeader('Iconlab');
+	// blockLine();
+	// blockLine(
+	// 	'Iconlab is building your icons from SVG and CSS files in the way you want.'
+	// );
 
 	await setup();
-	await load();
-	await build();
-	blockFooter();
+	// await load();
+	// await build();
+
+	// blockFooter();
 })();

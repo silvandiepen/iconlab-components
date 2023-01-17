@@ -12,7 +12,7 @@ export interface State {
 	data: {
 		icons: DataFile[];
 		styles: DataFile[];
-		templates:DataFile[];
+		templates: DataFile[];
 	};
 	settings: {
 		source: {
